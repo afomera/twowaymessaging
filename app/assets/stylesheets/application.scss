@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+ $navbar-default-brand-color: red;
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ @import "font-awesome";
+
+ .navbar-brand {
+   font-weight: bold;
+ }
+
+ html.turbolinks-progress-bar::before {
+   background-color: blue !important;
+   height: 3px !important;
+ }
+
+ .message-outbound {
+   min-width: 300px;
+   max-width: 70%;
+   float: right;
+ }
+ .message-inbound {
+   min-width: 300px;
+   max-width: 70%;
+   float: left;
+ }

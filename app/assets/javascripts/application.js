@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+
+// This enables Turbolinks progress bar
+$(document).on('ready', function(event) {
+  // initialize persistent state
+  Turbolinks.enableProgressBar();
+//  Turbolinks.ProgressBar.enable();
+});
