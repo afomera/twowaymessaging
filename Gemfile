@@ -55,3 +55,6 @@ gem 'font-awesome-rails'
 gem 'devise', '~> 4.1.0'
 
 gem 'local_time'
+
+# Background Jobs
+gem 'sucker_punch', '~> 2.0'
