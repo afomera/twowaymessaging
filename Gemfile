@@ -53,3 +53,5 @@ gem 'font-awesome-rails'
 
 # Devise for User Authentication
 gem 'devise', '~> 4.1.0'
+
+gem 'local_time'
