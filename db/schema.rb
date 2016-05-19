@@ -11,10 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513005750) do
+ActiveRecord::Schema.define(version: 20160519022654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conversations", force: :cascade do |t|
+    t.integer  "person_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "conversations", ["person_id"], name: "index_conversations_on_person_id", using: :btree
+  add_index "conversations", ["user_id"], name: "index_conversations_on_user_id", using: :btree
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "to"
+    t.string   "from"
+    t.string   "status"
+    t.string   "body"
+    t.string   "message_sid"
+    t.string   "account_sid"
+    t.string   "messaging_service_sid"
+    t.string   "direction"
+    t.integer  "user_id"
+    t.integer  "conversation_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "messages", ["conversation_id"], name: "index_messages_on_conversation_id", using: :btree
+  add_index "messages", ["user_id"], name: "index_messages_on_user_id", using: :btree
+
+  create_table "people", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "people", ["user_id"], name: "index_people_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,4 +72,9 @@ ActiveRecord::Schema.define(version: 20160513005750) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "conversations", "people"
+  add_foreign_key "conversations", "users"
+  add_foreign_key "messages", "conversations"
+  add_foreign_key "messages", "users"
+  add_foreign_key "people", "users"
 end

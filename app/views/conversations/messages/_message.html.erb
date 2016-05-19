@@ -1,0 +1,9 @@
+<div class="clearfix <%= message.id %>">
+  <div class="alert <%= message.from ? 'alert-info message-inbound' : 'alert-success message-outbound' %>">
+    <%= message.body %>
+     <div class="text-right">
+       <small><%= local_time message.created_at %> </small>
+       <% if message.status == "sent" %><small>sent</small><% end %>
+     </div>
+  </div>
+</div>

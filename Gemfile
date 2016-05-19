@@ -58,3 +58,6 @@ gem 'local_time'
 
 # Background Jobs
 gem 'sucker_punch', '~> 2.0'
+
+# Twilio
+gem 'twilio-ruby', '~> 4.11.1'
